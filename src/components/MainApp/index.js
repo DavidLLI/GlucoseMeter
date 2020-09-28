@@ -10,7 +10,6 @@ const StyleMainApp = styled.div`
 const Container = styled.div`
   position: relative;
   left: 8vw;
-  width: 100%;
 `;
 
 const Title = styled.div`
@@ -61,7 +60,7 @@ const Submit = styled.button`
   cursor: pointer;
   outline: none;
 
-  transition: background-color .3s;
+  transition: background-color .2s;
 
   :hover {
     background-color: #4A56E2;
