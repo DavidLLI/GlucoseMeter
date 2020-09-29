@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0b43e437660f41a7326bb08c125923a2",
+    "revision": "2105de2eca7f68adbfc03954d503d946",
     "url": "/GlucoseMeter/index.html"
   },
   {
-    "revision": "c6540eac81c0f867bf6b",
+    "revision": "5ce304d5a0595d900998",
     "url": "/GlucoseMeter/static/css/main.e9c2f9b8.chunk.css"
   },
   {
-    "revision": "473dce11750168fb3500",
-    "url": "/GlucoseMeter/static/js/2.9b6b5808.chunk.js"
+    "revision": "679070b915495e9a9d0b",
+    "url": "/GlucoseMeter/static/js/2.0f419e40.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/GlucoseMeter/static/js/2.9b6b5808.chunk.js.LICENSE.txt"
+    "url": "/GlucoseMeter/static/js/2.0f419e40.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c6540eac81c0f867bf6b",
-    "url": "/GlucoseMeter/static/js/main.c9e548a8.chunk.js"
+    "revision": "5ce304d5a0595d900998",
+    "url": "/GlucoseMeter/static/js/main.300648c0.chunk.js"
   },
   {
     "revision": "00b5f25e4e1f0548e9bb",
