@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ResultDisplay from './ResultDisplay';
+
 const StyleMainApp = styled.div`
   height: 75vh;
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: row;
 `;
 
 const Container = styled.div`
   position: relative;
+  wdith: 32vw;
+  height: 100%;
   left: 8vw;
 `;
 
@@ -72,7 +78,10 @@ class MainApp extends React.Component {
     super(props);
     this.state = {
       blank: 0,
-      sample: 0
+      sample: 0,
+      mainResult: '',
+      instruction: '',
+      background: '#333333'
     };
   }
 
@@ -84,7 +93,46 @@ class MainApp extends React.Component {
     this.setState({sample: e.target.value});
   }
 
+  handleSubmit = (e) => {
+    let {blank, sample} = this.state;
+    if (sample === 0) {
+      if (blank >= 103 && blank <= 134) {
+        this.setState({mainResult: 'Negative Result', background: '#04cc9c'});
+      }
+      else {
+        this.setState({
+          mainResult: 'Internal Control Failed',
+          instruction: 'Error',
+          background: '#ff7a89'
+        });
+      }
+    }
+    else {
+      if (sample >= 103 && sample <= 134) {
+        this.setState({mainResult: 'Negative Result', background: '#04cc9c'});
+      }
+      else if (sample >= 141 && sample <= 157) {
+        this.setState({mainResult: 'Typhoid', background: '#944e9e'});
+      }
+      else if (sample >= 174 && sample <= 192) {
+        this.setState({mainResult: 'Drug Resistance (No typhoid)', background: '#944e9e'});
+      }
+      else if (sample >= 210 && sample <= 264) {
+        this.setState({mainResult: 'Typhoid & Drug resistance', background: '#944e9e'});
+      }
+      else {
+        this.setState({mainResult: 'Inconclusive',
+          instruction: 'Please read the sample again', background: '#ff7a89'});
+      }
+    }
+  }
+
+  handleReset = () => {
+    this.setState({blank: 0, sample: 0, mainResult: '', background: '#333333'});
+  }
+
 	render() {
+    let {mainResult, instruction, background, blank, sample} = this.state;
     return (
       <StyleMainApp>
         <Container>
@@ -95,7 +143,7 @@ class MainApp extends React.Component {
             <InputTitle>
               Reading on Blank:
             </InputTitle>
-            <Input type='number' onChange={this.handleBlankChange}/>
+            <Input type='number' value={blank} onChange={this.handleBlankChange}/>
             <InputUnit>
               mg/dL
             </InputUnit>
@@ -104,15 +152,21 @@ class MainApp extends React.Component {
             <InputTitle>
               Reading on Sample:
             </InputTitle>
-            <Input type='number' onChange={this.handleSampleChange}/>
+            <Input type='number' value={sample} onChange={this.handleSampleChange}/>
             <InputUnit>
               mg/dL
             </InputUnit>
           </InputDiv>
-          <Submit>
+          <Submit onClick={this.handleSubmit}>
             Submit
           </Submit>
         </Container>
+        <ResultDisplay 
+          mainResult={mainResult} 
+          instruction={instruction} 
+          background={background}
+          handleReset={this.handleReset}
+        />
       </StyleMainApp>
     );
   }
