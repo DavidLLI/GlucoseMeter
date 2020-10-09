@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d7820a6c8dc3f3def0f1edfa6d7dffc3",
+    "revision": "0618a5b802ced350c4b6f3e12b35e880",
     "url": "/GlucoseMeter/index.html"
   },
   {
-    "revision": "2f5f12d4008b2772892c",
+    "revision": "3d0b56ed063f822cfa73",
     "url": "/GlucoseMeter/static/css/main.e9c2f9b8.chunk.css"
   },
   {
@@ -16,16 +16,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/GlucoseMeter/static/js/2.aa21739e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2f5f12d4008b2772892c",
-    "url": "/GlucoseMeter/static/js/main.84be3a32.chunk.js"
+    "revision": "3d0b56ed063f822cfa73",
+    "url": "/GlucoseMeter/static/js/main.2bc53eaa.chunk.js"
   },
   {
     "revision": "00b5f25e4e1f0548e9bb",
     "url": "/GlucoseMeter/static/js/runtime-main.f5d33258.js"
   },
   {
-    "revision": "6ced75fdb70cf3b329b44f89afe06e58",
-    "url": "/GlucoseMeter/static/media/Banner-image-11.6ced75fd.png"
+    "revision": "b2252182ff5610a5913551baf3000f45",
+    "url": "/GlucoseMeter/static/media/Banner-image-11.b2252182.png"
   },
   {
     "revision": "f5ff7348ef116a9a4d1ad89e6bf67f13",
