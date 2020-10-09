@@ -3,6 +3,11 @@ import styled from 'styled-components';
 
 import ResultDisplay from './ResultDisplay';
 
+import typhoidImg from '../../assets/LSK-glucose-meter-coding-logic-12.png';
+import drugImg from '../../assets/LSK-glucose-meter-coding-logic-11.png';
+import typhoidDrugImg from '../../assets/LSK-glucose-meter-coding-logic-13.png';
+
+
 const StyleMainApp = styled.div`
   height: 75vh;
   width: 100%;
@@ -94,8 +99,12 @@ class MainApp extends React.Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     let {blank, sample} = this.state;
-    if (sample === 0) {
+    if ((!sample || sample == 0) && (!blank || blank == 0)) {
+      return;
+    }
+    if (!sample || sample == 0) {
       if (blank >= 103 && blank <= 134) {
         this.setState({mainResult: 'Negative Result', background: '#04cc9c'});
       }
@@ -112,13 +121,13 @@ class MainApp extends React.Component {
         this.setState({mainResult: 'Negative Result', background: '#04cc9c'});
       }
       else if (sample >= 141 && sample <= 157) {
-        this.setState({mainResult: 'Typhoid', background: '#944e9e'});
+        this.setState({mainResult: 'Typhoid', background: 'url(\'' + typhoidImg + '\')'});
       }
       else if (sample >= 174 && sample <= 192) {
-        this.setState({mainResult: 'Drug Resistance (No typhoid)', background: '#944e9e'});
+        this.setState({mainResult: 'Drug Resistance\n(No typhoid)', background: 'url(\'' + drugImg + '\')'});
       }
       else if (sample >= 210 && sample <= 264) {
-        this.setState({mainResult: 'Typhoid & Drug resistance', background: '#944e9e'});
+        this.setState({mainResult: 'Typhoid &\nDrug resistance', background: 'url(\'' + typhoidDrugImg + '\')'});
       }
       else {
         this.setState({mainResult: 'Inconclusive',
@@ -136,30 +145,32 @@ class MainApp extends React.Component {
     return (
       <StyleMainApp>
         <Container>
-          <Title>
-            Glucose Level
-          </Title>
-          <InputDiv>
-            <InputTitle>
-              Reading on Blank:
-            </InputTitle>
-            <Input type='number' value={blank} onChange={this.handleBlankChange}/>
-            <InputUnit>
-              mg/dL
-            </InputUnit>
-          </InputDiv>
-          <InputDiv>
-            <InputTitle>
-              Reading on Sample:
-            </InputTitle>
-            <Input type='number' value={sample} onChange={this.handleSampleChange}/>
-            <InputUnit>
-              mg/dL
-            </InputUnit>
-          </InputDiv>
-          <Submit onClick={this.handleSubmit}>
-            Submit
-          </Submit>
+          <form onSubmit={this.handelSubmit}>
+            <Title>
+              Glucose Level
+            </Title>
+            <InputDiv>
+              <InputTitle>
+                Reading on Blank:
+              </InputTitle>
+              <Input type='number' value={blank} onChange={this.handleBlankChange}/>
+              <InputUnit>
+                mg/dL
+              </InputUnit>
+            </InputDiv>
+            <InputDiv>
+              <InputTitle>
+                Reading on Sample:
+              </InputTitle>
+              <Input type='number' value={sample} onChange={this.handleSampleChange}/>
+              <InputUnit>
+                mg/dL
+              </InputUnit>
+            </InputDiv>
+            <Submit onClick={this.handleSubmit}>
+              Submit
+            </Submit>
+          </form>
         </Container>
         <ResultDisplay 
           mainResult={mainResult} 

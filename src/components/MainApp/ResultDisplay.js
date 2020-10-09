@@ -15,12 +15,10 @@ const FirstRect = styled.div`
   height: 50vh;
   max-height: 350px;
   border-radius: 20px;
-  background-color: ${props => props.background};
   top: 50px;
   left: 50%;
   transform: translate(-50%);
   z-index: 2;
-  transition: background-color .5s;
 `;
 
 const SecondRect = styled.div`
@@ -54,17 +52,21 @@ const ThirdRect = styled.div`
 const ResultLabel = styled.label`
   position: absolute;
   left: 50%;
-  top: calc(50px + 20vh);
-  transform: translate(-50%);
+  top: 50%;
+  white-space: pre-wrap;
+  transform: translate(-50%, -50%);
   color: white;
   font-size: 2.5vw;
+  font-weight: bold;
   z-index: 3;
+  width: 70%;
+  text-align: center;
 `;
 
 const ResetButton = styled.button`
   position: absolute;
   left: 50%;
-  top: calc(50px + 32vh);
+  top: 75%;
   transform: translate(-50%);
   width: 100px;
   height: 50px;
@@ -84,6 +86,15 @@ const ResetButton = styled.button`
   }
 `;
 
+const RectBackground = styled.div`
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  background: ${props => props.background} no-repeat center;
+  background-size: contain;
+  transition: background .5s;
+`;
+
 class ResultDisplay extends React.Component {
 	constructor(props) {
     super(props);
@@ -93,17 +104,19 @@ class ResultDisplay extends React.Component {
     let result = this.props.mainResult || 'Please input your readings';
     return (
       <Container>
-        <FirstRect background={this.props.background}/>
+        <FirstRect>
+          <RectBackground background={this.props.background}/>
+          <ResultLabel>
+            {result}
+          </ResultLabel>
+          {this.props.mainResult &&
+            <ResetButton onClick={this.props.handleReset}>
+              Reset
+            </ResetButton>
+          }
+        </FirstRect>
         <SecondRect />
         <ThirdRect />
-        <ResultLabel>
-          {result}
-        </ResultLabel>
-        {this.props.mainResult &&
-          <ResetButton onClick={this.props.handleReset}>
-            Reset
-          </ResetButton>
-        }
       </Container>
     );
   }
